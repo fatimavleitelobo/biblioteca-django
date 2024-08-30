@@ -19,3 +19,15 @@ class Autor(models.Model):
 
     def __str__(self):
         return self.nome
+
+class Livro(models.Model):
+    titulo = models.CharField(max_length=200)
+    autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    publicado_em = models.DateField()
+
+    class Meta:
+        verbose_name_plural = 'Livros'
+
+    def __str__(self):
+        return self.titulo
